@@ -1,4 +1,4 @@
-from .models import Comisaria,Denuncia,Denunciante
+from .models import Comisaria,Denuncia,Usuario
 from rest_framework import serializers
 
 
@@ -13,8 +13,8 @@ class DenunciaSerializer(serializers.ModelSerializer):
         fields='__all__'
 
     
-class DenuncianteSerializer(serializers.ModelSerializer):
+class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Denunciante
+        model=Usuario
         fields='__all__'
         

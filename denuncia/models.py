@@ -2,8 +2,8 @@ from django.db import models
 
 # Create your models here.
 
-class Denunciante(models.Model):
-    nombre = models.CharField(max_length=50)
+class Usuario(models.Model):
+    nombres = models.CharField(max_length=50)
     apellidos = models.CharField(max_length=50)
     dni = models.CharField(max_length=8)
     edad = models.PositiveSmallIntegerField()
@@ -11,25 +11,25 @@ class Denunciante(models.Model):
     sexo = models.CharField(max_length=1,choices=sex)
 
     def __str__(self):
-        return '{} {}'.format(self.nombre,self.apellidos)
+        return '{} {}'.format(self.nombres,self.apellidos)
 
     class Meta:
         #Sdb_table = ''
         managed = True
-        verbose_name = 'Denunciante'
-        verbose_name_plural = 'Denunciantes'
+        verbose_name = 'Usuario'
+        verbose_name_plural = 'Usuarios'
         
 class Denuncia(models.Model):
     dni = models.CharField(max_length=8)
-    denunciante = models.ForeignKey(Denunciante,on_delete=models.CASCADE)
+    user = models.ForeignKey(Usuario,on_delete=models.CASCADE)
     fecha= models.DateField()
     tipos= [('1','simple'),('2','Agravado')]
     tipo= models.CharField(max_length=1, choices=tipos)
-    objeto = models.CharField(max_length=50)
+    #objeto = models.CharField(max_length=50)
     descripcion= models.TextField()
     lat= models.DecimalField(max_digits=10, decimal_places=8)
     long= models.DecimalField(max_digits=10, decimal_places=8)
-    estados=[('1','Abierta'),('2','Pend. Verificacion'),('3','Rechazada')]
+    estados=[('1','Pend. Verificacion'),('2','Aceptada'),('3','Rechazada')]
     estado= models.CharField(max_length=1,choices=estados)
 
 
