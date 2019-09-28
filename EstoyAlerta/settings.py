@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'denuncia.apps.DenunciaConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
